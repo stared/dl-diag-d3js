@@ -1,0 +1,38 @@
+- name: conv1
+  type: Conv2D
+  input_shape: [32, 32, 3]
+  kernel_size: [3, 1]
+  activation: relu
+- name: pool1
+  type: MaxPool2D
+  input_shape: [32, 32, 16]
+  pool_size: [2, 2]
+- name: conv2_1
+  type: Conv2D
+  input_shape: [16, 16, 16]
+  kernel_size: [3, 3]
+  activation: relu
+- name: conv2_2
+  type: Conv2D
+  input_shape: [16, 16, 32]
+  kernel_size: [3, 3]
+  activation: relu
+- name: pool2
+  type: MaxPool2D
+  input_shape: [16, 16, 32]
+  pool_size: [2, 2]
+- name: flatten
+  type: flatten
+  input_shape: [8, 8, 32]
+- name: dense1
+  type: dense
+  input_shape: [2048]
+  activation: tanh
+- name: dropout
+  type: dropout
+  input_shape: [128]
+  dropout_rate: 0.5
+- name: dense2
+  type: dense
+  input_shape: [128]
+  activation: softmax
